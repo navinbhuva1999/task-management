@@ -1,0 +1,8 @@
+
+
+  VITE v6.2.0  ready in 226 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+^Cnpm install tailwindcss @tailwindcss/vite
