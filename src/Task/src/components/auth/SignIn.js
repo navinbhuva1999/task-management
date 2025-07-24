@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
-import { motion }  from 'framer-motion';
+import { motion } from 'framer-motion';
 import Input from '../ui/Input';
 import Button from '../ui/Button';
 import { signInSchema } from '../../utils/validationSchema';
@@ -13,13 +13,14 @@ const SignIn = () => {
   const { login, loginLoading } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const from = location.state?.from?.pathname || '/dashboard';
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'krish@yopmail.com',
+      password: '&xg6flrJ9a2K',
+      // password: 'c!$9ku6Vx8q&', 
       rememberMe: false
     },
     validationSchema: signInSchema,
@@ -30,7 +31,7 @@ const SignIn = () => {
           password: values.password,
           device: 'web'
         });
-        
+
         if (response.success) {
           navigate(from, { replace: true });
         }
@@ -42,24 +43,24 @@ const SignIn = () => {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5 }
     }
   };
 
   return (
-    <div className="bg-white relative overflow-hidden sm:pb-4 md:pb-6 lg:pb-10">
-      <div className="absolute right-0 top-0 w-64 h-64 opacity-10">
+    <div className="bg-white relative overflow-hidden sm:pb-4 md:pb-6 lg:pb-8 xl:pb-10">
+      <div className="absolute right-0 top-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-10">
         <img src="/images/email_bg.svg" alt="" className="w-full h-full" />
       </div>
-      <div className="absolute left-0 bottom-0 w-64 h-64 opacity-10">
+      <div className="absolute left-0 bottom-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-10">
         <img src="/images/project_bg.svg" alt="" className="w-full h-full" />
       </div>
-      
-      <div className="container mx-auto px-4 py-8 sm:py-12">
-        <motion.div 
+
+      <div className="container mx-auto px-4 py-6 sm:py-8 md:py-10 lg:py-12">
+        <motion.div
           className="max-w-7xl mx-auto"
           initial="hidden"
           animate="visible"
@@ -73,27 +74,27 @@ const SignIn = () => {
           }}
         >
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <motion.div 
-              className="w-full md:w-1/2 lg:w-5/12 mb-10 md:mb-0"
+            <motion.div
+              className="w-full md:w-1/2 lg:w-5/12 mb-8 md:mb-0"
               variants={fadeInUp}
             >
-              <div className="max-w-md mx-auto md:mx-0 md:ml-auto md:mr-8 lg:mr-16">
-                <motion.h2 
-                  className="text-3xl font-bold text-black-0 mb-2"
+              <div className="max-w-md mx-auto md:mx-0 md:ml-auto md:mr-6 lg:mr-12 xl:mr-16">
+                <motion.h2
+                  className="text-2xl md:text-3xl font-bold text-black-0 mb-1 md:mb-2"
                   variants={fadeInUp}
                 >
                   Sign In
                 </motion.h2>
-                <motion.p 
-                  className="text-gray-dark-200 mb-8 font-medium text-sm"
+                <motion.p
+                  className="text-gray-dark-200 mb-6 md:mb-8 font-medium text-sm"
                   variants={fadeInUp}
                 >
                   Welcome! please log in with your PMI account to continue
                 </motion.p>
 
-                <motion.form 
-                  onSubmit={formik.handleSubmit} 
-                  className="space-y-6"
+                <motion.form
+                  onSubmit={formik.handleSubmit}
+                  className="space-y-4 md:space-y-6"
                   variants={fadeInUp}
                 >
                   <motion.div variants={fadeInUp}>
@@ -143,7 +144,7 @@ const SignIn = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div 
+                  <motion.div
                     className="flex items-center justify-between"
                     variants={fadeInUp}
                   >
@@ -155,10 +156,10 @@ const SignIn = () => {
                           type="checkbox"
                           checked={formik.values.rememberMe}
                           onChange={formik.handleChange}
-                          className="opacity-0 absolute h-5 w-5 cursor-pointer"
+                          className="opacity-0 absolute h-4 w-4 md:h-5 md:w-5 cursor-pointer"
                         />
-                        <div className={`border ${formik.values.rememberMe ? 'bg-purple-light border-purple-light' : 'border-gray-300'} rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-2 transition-colors duration-200`}>
-                          <svg className={`fill-current w-3 h-3 text-white pointer-events-none ${formik.values.rememberMe ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`} viewBox="0 0 20 20">
+                        <div className={`border ${formik.values.rememberMe ? 'bg-purple-light border-purple-light' : 'border-gray-300'} rounded h-4 w-4 md:h-5 md:w-5 flex flex-shrink-0 justify-center items-center mr-2 transition-colors duration-200`}>
+                          <svg className={`fill-current w-2.5 h-2.5 md:w-3 md:h-3 text-white pointer-events-none ${formik.values.rememberMe ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`} viewBox="0 0 20 20">
                             <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
                           </svg>
                         </div>
@@ -180,15 +181,15 @@ const SignIn = () => {
                       type="submit"
                       variant="primary"
                       fullWidth
-                      className="py-3 !rounded-full !font-bold transition-transform duration-200 hover:scale-[1.02]"
+                      className="py-2.5 md:py-3 !rounded-full !font-bold transition-transform duration-200 hover:scale-[1.02]"
                       disabled={loginLoading}
                     >
                       {loginLoading ? 'Signing in...' : 'Sign in'}
                     </Button>
                   </motion.div>
 
-                  <motion.div 
-                    className="relative my-6 flex items-center justify-center"
+                  <motion.div
+                    className="relative my-4 md:my-6 flex items-center justify-center"
                     variants={fadeInUp}
                   >
                     <div className="absolute inset-0 flex items-center">
@@ -201,8 +202,8 @@ const SignIn = () => {
 
                 </motion.form>
 
-                <motion.div 
-                  className="mt-6 text-center"
+                <motion.div
+                  className="mt-4 md:mt-6 text-center"
                   variants={fadeInUp}
                 >
                   <p className="text-sm text-gray-600">
@@ -215,19 +216,19 @@ const SignIn = () => {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="w-full md:w-1/2 lg:w-6/12 hidden md:block"
               variants={fadeInUp}
             >
               <div className="rounded-lg overflow-hidden">
-                <img 
-                  src="/images/Group 1376156601.svg" 
-                  alt="Student with books" 
+                <img
+                  src="/images/Group 1376156601.svg"
+                  alt="Student with books"
                   className="w-full h-auto"
                 />
-              </div>  
+              </div>
             </motion.div>
-           </div>
+          </div>
         </motion.div>
       </div>
     </div>

@@ -66,8 +66,8 @@ const SignUp = () => {
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5 }
     }
@@ -75,16 +75,15 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Background pattern elements */}
-      <div className="absolute right-0 top-0 w-64 h-64 opacity-10">
+      <div className="absolute right-0 top-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-10">
         <img src="/images/email_bg.svg" alt="" className="w-full h-full" />
       </div>
-      <div className="absolute left-0 bottom-0 w-64 h-64 opacity-10">
+      <div className="absolute left-0 bottom-0 w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-10">
         <img src="/images/project_bg.svg" alt="" className="w-full h-full" />
       </div>
-      
-      <div className="container mx-auto px-4 py-8 sm:py-12">
-        <motion.div 
+
+      <div className="container mx-auto px-4 py-6 sm:py-8 md:py-10 lg:py-12">
+        <motion.div
           className="max-w-7xl mx-auto"
           initial="hidden"
           animate="visible"
@@ -98,19 +97,19 @@ const SignUp = () => {
           }}
         >
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <motion.div 
-              className="w-full md:w-1/2 lg:w-5/12 mb-10 md:mb-0"
+            <motion.div
+              className="w-full md:w-1/2 lg:w-5/12 mb-8 md:mb-0"
               variants={fadeInUp}
             >
-              <div className="max-w-md mx-auto md:mx-0 md:ml-auto md:mr-8 lg:mr-16">
-                <motion.h2 
-                  className="text-3xl font-bold text-black-0 mb-2"
+              <div className="max-w-md mx-auto md:mx-0 md:ml-auto md:mr-6 lg:mr-12 xl:mr-16">
+                <motion.h2
+                  className="text-2xl md:text-3xl font-bold text-black-0 mb-1 md:mb-2"
                   variants={fadeInUp}
                 >
                   Sign Up
                 </motion.h2>
-                <motion.p 
-                  className="text-gray-dark-200 mb-8 font-medium text-sm"
+                <motion.p
+                  className="text-gray-dark-200 mb-6 md:mb-8 font-medium text-sm"
                   variants={fadeInUp}
                 >
                   Please use the same email address you used to register on{' '}
@@ -118,9 +117,9 @@ const SignUp = () => {
                   <Link to="https://pmi.org" target="_blank" className="text-indigo-800 font-semibold hover:text-indigo-700 underline"> pmi.org</Link> first, then sign up here with that email.
                 </motion.p>
 
-                <motion.form 
-                  onSubmit={handleSubmit} 
-                  className="space-y-6"
+                <motion.form
+                  onSubmit={handleSubmit}
+                  className="space-y-4 md:space-y-6"
                   variants={fadeInUp}
                 >
                   <motion.div variants={fadeInUp}>
@@ -165,16 +164,16 @@ const SignUp = () => {
                       <div className="relative">
                         <button
                           type="button"
-                          className="flex items-center justify-between px-3 py-2 border border-gray-300 rounded-l-full bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          className="flex items-center justify-between px-2 md:px-3 py-2 border border-gray-300 rounded-l-full bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                           onClick={() => setShowCountryDropdown(!showCountryDropdown)}
                         >
                           <img
                             src={`https://flagcdn.com/w20/${selectedCountry.code}.png`}
                             alt={selectedCountry.dial}
-                            className="h-4 w-6 mr-1"
+                            className="h-3 w-5 md:h-4 md:w-6 mr-1"
                           />
-                          <span className="text-sm mr-1">{selectedCountry.dial}</span>
-                          <FiChevronDown className={`h-4 w-4 transition-transform ${showCountryDropdown ? 'transform rotate-180' : ''}`} />
+                          <span className="text-xs md:text-sm mr-1">{selectedCountry.dial}</span>
+                          <FiChevronDown className={`h-3 w-3 md:h-4 md:w-4 transition-transform ${showCountryDropdown ? 'transform rotate-180' : ''}`} />
                         </button>
 
                         {showCountryDropdown && (
@@ -186,14 +185,14 @@ const SignUp = () => {
                                   setSelectedCountry(country);
                                   setShowCountryDropdown(false);
                                 }}
-                                className="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                                className="flex items-center px-2 md:px-3 py-2 hover:bg-gray-100 cursor-pointer"
                               >
                                 <img
                                   src={`https://flagcdn.com/w20/${country.code}.png`}
                                   alt={country.name}
-                                  className="h-4 w-6 mr-2"
+                                  className="h-3 w-5 md:h-4 md:w-6 mr-2"
                                 />
-                                <span className="text-sm">{country.dial}</span>
+                                <span className="text-xs md:text-sm">{country.dial}</span>
                               </div>
                             ))}
                           </div>
@@ -209,8 +208,8 @@ const SignUp = () => {
                         value={formik.values.phoneNumber}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        className={`flex-1 appearance-none block w-full px-4 py-2 border ${formik.touched.phoneNumber && formik.errors.phoneNumber ? 'border-red-500' : 'border-gray-300'
-                          } border-l-0 rounded-r-full shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
+                        className={`flex-1 appearance-none block w-full px-3 md:px-4 py-2 border ${formik.touched.phoneNumber && formik.errors.phoneNumber ? 'border-red-500' : 'border-gray-300'
+                          } border-l-0 rounded-r-full shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm`}
                       />
                     </div>
                     {formik.touched.phoneNumber && formik.errors.phoneNumber && (
@@ -250,16 +249,16 @@ const SignUp = () => {
                   <motion.div className="flex items-start" variants={fadeInUp}>
                     <div className="flex items-center h-5">
                       <div className="relative flex items-center">
-                      <input
-                        id="agreeTerms"
-                        name="agreeTerms"
-                        type="checkbox"
-                        checked={formik.values.agreeTerms}
-                        onChange={formik.handleChange}
-                        className="opacity-0 absolute h-5 w-5 cursor-pointer"
-                      />
-                        <div className={`border ${formik.values.agreeTerms ? 'bg-purple-light border-purple-light' : 'border-gray-300'} rounded h-5 w-5 flex flex-shrink-0 justify-center items-center mr-2 transition-colors duration-200`}>
-                          <svg className={`fill-current w-3 h-3 text-white pointer-events-none ${formik.values.agreeTerms ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`} viewBox="0 0 20 20">
+                        <input
+                          id="agreeTerms"
+                          name="agreeTerms"
+                          type="checkbox"
+                          checked={formik.values.agreeTerms}
+                          onChange={formik.handleChange}
+                          className="opacity-0 absolute h-4 w-4 md:h-5 md:w-5 cursor-pointer"
+                        />
+                        <div className={`border ${formik.values.agreeTerms ? 'bg-purple-light border-purple-light' : 'border-gray-300'} rounded h-4 w-4 md:h-5 md:w-5 flex flex-shrink-0 justify-center items-center mr-2 transition-colors duration-200`}>
+                          <svg className={`fill-current w-2.5 h-2.5 md:w-3 md:h-3 text-white pointer-events-none ${formik.values.agreeTerms ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`} viewBox="0 0 20 20">
                             <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
                           </svg>
                         </div>
@@ -281,21 +280,21 @@ const SignUp = () => {
                       )}
                     </div>
                   </motion.div>
-                  
+
                   <motion.div variants={fadeInUp}>
                     <Button
                       type="submit"
                       variant="primary"
                       fullWidth
-                      className="py-3 !rounded-full !font-bold transition-transform duration-200 hover:scale-[1.02]"
+                      className="py-2.5 md:py-3 !rounded-full !font-bold transition-transform duration-200 hover:scale-[1.02]"
                       disabled={registerMutation.isPending || !formik.values.agreeTerms}
                     >
                       {registerMutation.isPending ? 'Signing up...' : 'Request OTP'}
                     </Button>
                   </motion.div>
 
-                  <motion.div 
-                    className="relative my-6 flex items-center justify-center"
+                  <motion.div
+                    className="relative my-4 md:my-6 flex items-center justify-center"
                     variants={fadeInUp}
                   >
                     <div className="absolute inset-0 flex items-center">
@@ -306,26 +305,26 @@ const SignUp = () => {
                     </div>
                   </motion.div>
 
-                  <motion.div className="space-y-3" variants={fadeInUp}>
+                  <motion.div className="space-y-2 md:space-y-3" variants={fadeInUp}>
                     <button
                       type="button"
-                      className="w-full flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full flex items-center justify-center px-4 py-2 md:py-2.5 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
                     >
-                      <FcGoogle className="w-5 h-5 mr-2" />
+                      <FcGoogle className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                       Sign in with google
                     </button>
                     <button
                       type="button"
-                      className="w-full flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full flex items-center justify-center px-4 py-2 md:py-2.5 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
                     >
-                      <FaLinkedinIn className="w-4 h-4 mr-2 text-blue-700" />
+                      <FaLinkedinIn className="w-3 h-3 md:w-4 md:h-4 mr-2 text-blue-700" />
                       Sign in with linkedin
                     </button>
                   </motion.div>
                 </motion.form>
 
-                <motion.div 
-                  className="mt-6 text-center"
+                <motion.div
+                  className="mt-4 md:mt-6 text-center"
                   variants={fadeInUp}
                 >
                   <p className="text-sm text-gray-600">
@@ -338,7 +337,7 @@ const SignUp = () => {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               className="w-full md:w-1/2 lg:w-6/12 hidden md:block"
               variants={fadeInUp}
             >
